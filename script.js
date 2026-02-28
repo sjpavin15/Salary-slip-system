@@ -1,8 +1,8 @@
 function searchPayslip() {
 
-    var contract = document.getElementById("contract").value;
-    var month = document.getElementById("month").value;
-    var year = document.getElementById("year").value;
+    var contract = document.getElementById("contract").value.trim();
+    var month = document.getElementById("month").value.trim();
+    var year = document.getElementById("year").value.trim();
     var empId = document.getElementById("empId").value.trim();
 
     var loader = document.getElementById("loader");
@@ -12,22 +12,20 @@ function searchPayslip() {
     loader.style.display = "block";
     loader.innerHTML = "Searching, please wait...";
 
-    if (empId === "") {
+    if (!contract || !month || !year || !empId) {
         loader.style.display = "none";
-        result.innerHTML = "<div class='error'>Please enter Employee ID</div>";
+        result.innerHTML = "<div class='error'>Please fill all fields</div>";
         return;
     }
 
-    var fileURL = "https://raw.githubusercontent.com/sjpavin15/Salary-slip-system/main/" 
-                  + contract + "/" 
-                  + year + "/" 
-                  + month + "/" 
-                  + empId + ".pdf";
+    var fileURL = `https://raw.githubusercontent.com/sjpavin15/Salary-slip-system/main/${contract}/${year}/${month}/${empId}.pdf`;
+
+    console.log("Generated URL:", fileURL);
 
     setTimeout(function () {
 
-        fetch(fileURL)
-            .then(function(response) {
+        fetch(fileURL, { method: 'HEAD' })
+            .then(function (response) {
 
                 loader.style.display = "none";
 
@@ -43,11 +41,12 @@ function searchPayslip() {
                         "<div class='error'>Payslip not available for selected Month & Year</div>";
                 }
             })
-            .catch(function() {
+            .catch(function () {
+
                 loader.style.display = "none";
                 result.innerHTML =
-                    "<div class='error'>Server connection error</div>";
+                    "<div class='error'>Payslip not available for selected Month & Year</div>";
             });
 
-    }, 2000);
+    }, 1200);
 }
