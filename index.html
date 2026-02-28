@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Payslip Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+    <h2>Online Payslip Portal</h2>
+    <p class="subtitle">Secure Salary Access System</p>
+
+    <label>Contract</label>
+    <select id="contract">
+        <option value="SMSE-JASMINE">SMSE-JASMINE</option>
+    
+    </select>
+
+    <label>Month</label>
+    <select id="month">
+        <option value="January">January</option>
+        <option value="February">February</option>
+       
+    </select>
+
+    <label>Year</label>
+    <select id="year">
+        <option value="2025" selected>2025</option>
+        <option value="2026">2026</option>
+    </select>
+
+    <label>Employee ID</label>
+    <input type="text" id="empId" placeholder="Enter Employee ID">
+
+    <button onclick="searchPayslip()">Search Payslip</button>
+
+    <!-- Powered By Text -->
+    <p style="text-align:center; margin-top:12px; font-size:13px; color:#666;">
+        Powered by <strong>PAVI TECH</strong>
+    </p>
+
+    <div id="loader" class="loader"></div>
+    <div id="result"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
