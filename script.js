@@ -18,7 +18,7 @@ function searchPayslip() {
         return;
     }
 
-    var fileURL = "https://raw.githubusercontent.com/sjpavin15/payslip-system/main/" 
+    var fileURL = "https://raw.githubusercontent.com/sjpavin15/Salary-slip-system/main/" 
                   + contract + "/" 
                   + year + "/" 
                   + month + "/" 
